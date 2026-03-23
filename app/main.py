@@ -13,11 +13,9 @@ def get_weather(city: str = DEFAULT_CITY) -> None:
     if not API_KEY:
         raise ValueError("API_KEY must be set")
 
-    url = "https://api.weatherapi.com/v1/current.json"
-
     params = {"key": API_KEY, "q": city}
 
-    response = requests.get(url, params=params, timeout=10)
+    response = requests.get(BASE_URL, params=params, timeout=10)
     response.raise_for_status()
 
     data = response.json()
